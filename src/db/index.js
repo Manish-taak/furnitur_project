@@ -1,6 +1,7 @@
 import { Sequelize,DataTypes } from "sequelize";
 import user from "../models/user.model.js"
-import Testinguserform from "../models/testingloginform.model.js"
+import testingform from "../models/testingloginform.model.js"
+import products from "../models/products.model.js";
 
 
 const sequelize = new Sequelize('user', 'root', '8829860158', {
@@ -20,8 +21,11 @@ const sequelize = new Sequelize('user', 'root', '8829860158', {
 
   db.user = user(sequelize,DataTypes)
   // db.user.sync({force:true})
-  db.Testinguserform = Testinguserform(sequelize,DataTypes)
-  // db.Testinguserform.sync({force:true})
+  db.testingform = testingform(sequelize,DataTypes)
+  // db.testingform.sync({force:true})
+  db.products = products(sequelize,DataTypes)
+  // db.products.sync({force:true})
   
 
+  
   export default db

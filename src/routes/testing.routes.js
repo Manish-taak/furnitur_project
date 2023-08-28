@@ -1,16 +1,20 @@
-import express from 'express'
+import express from "express";
 
-import {findonedata,findAlldata,destroydata} from "../controllers/testingloginform.js"
+import {
+  findonedata,
+  findAlldata,
+  destroydata,
+  updateusers,
+} from "../controllers/testingloginform.js";
 
+const testingroutes = (app) => {
+  let routes = express.Router();
 
-const testingroutes = (app) =>{
-   let routes = express.Router() 
+  routes.post("/getonedata", findonedata);
+  routes.get("/getAlldata", findAlldata);
+  routes.delete("/deletedata:email", destroydata);
+  routes.put("/", updateusers);
+  app.use("/testinguserform", routes);
+};
 
-   routes.post('/getonedata',findonedata)
-   routes.get('/getAlldata',findAlldata)
-   routes.delete('/deletedata:email',destroydata)
-
-   app.use('/testinguserform',routes)
-} 
-
-export default testingroutes
+export default testingroutes;
