@@ -15,7 +15,11 @@ const user = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.INTEGER,
     },
+    profile: {
+      type: DataTypes.STRING,
+    },
   });
 };
 
 export default user;
+ 
