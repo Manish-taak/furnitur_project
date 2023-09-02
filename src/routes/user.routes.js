@@ -29,11 +29,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-
-
 const userroutes = (app) => {
   let routes = express.Router();
-
   routes.post("/userdatacreate",upload.single("profile"), datacreate);
   routes.get("/getuserdata", getdata);
   routes.put("/putuserdata", updatedata);
