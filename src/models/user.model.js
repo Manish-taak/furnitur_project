@@ -13,7 +13,7 @@ const user = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     password: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     profile: {
       type: DataTypes.STRING,

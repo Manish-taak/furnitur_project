@@ -1,9 +1,11 @@
 import db from "../db/index.js";
-
+import  Jwt  from "jsonwebtoken";
+import bcrypt from "bcrypt"
 const datacreate = async (req, res) => {
   try {
     let data = req.body;
-    console.log(data, "iuyikygugyuf");
+    let encrypt = await bcrypt.hash(data.password,12)
+    data.password= encrypt
     let result = await db.user.findOne({ where: { email: data.email } });
     if (result != null) {
       res.status(500).send({ message: "email is already exist" });
@@ -12,17 +14,22 @@ const datacreate = async (req, res) => {
       res.status(200).send({ data: result, status: 200 });
     }
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).send(error.message); 
   }
 };
 
 const getdata = async (req, res) => {
   try {
+    console.log("==hii");
     let data = req.body;
     let result = await db.user.findOne({ where: { email: data.username } });
-    console.log(result);
-    if (result.password == data.password) {
-      res.status(200).send({ message: "log in successfull" });
+
+    let match = bcrypt.compareSync(data.password,result.password)
+
+    if (match) {
+      const token = Jwt.sign({ email: data.username },"testing",{expiresIn:'1h'});
+      console.log(token)
+      res.status(200).send({ message: "log in successfull" ,token : token });
     } else {
       res.status(500).send({ message: "check your email and password" });
     }

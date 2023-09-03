@@ -32,7 +32,7 @@ const upload = multer({ storage: storage });
 const userroutes = (app) => {
   let routes = express.Router();
   routes.post("/userdatacreate",upload.single("profile"), datacreate);
-  routes.get("/getuserdata", getdata);
+  routes.post("/getuserdata", getdata);
   routes.put("/putuserdata", updatedata);
 
   app.use("/user", routes);
