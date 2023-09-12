@@ -2,9 +2,9 @@ import { Sequelize,DataTypes } from "sequelize";
 import user from "../models/user.model.js"
 import testingform from "../models/testingloginform.model.js"
 import products from "../models/products.model.js";
+import cartmodel from "../models/cart.model.js";
 
-
-const sequelize = new Sequelize('user', 'root', '8829860158', {
+const sequelize = new Sequelize('user', 'root', '6377115988', {
     host: 'localhost',
     dialect: "mysql"/* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
   });
@@ -25,7 +25,7 @@ const sequelize = new Sequelize('user', 'root', '8829860158', {
   // db.testingform.sync({force:true})
   db.products = products(sequelize,DataTypes)
   // db.products.sync({force:true})
-  
-
+  db.cartmodel = cartmodel(sequelize,DataTypes)
+  // db.cartmodel.sync({force:true})
   
   export default db

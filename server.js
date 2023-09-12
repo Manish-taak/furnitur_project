@@ -7,6 +7,7 @@ import multer from "multer"
 import userroutes from "./src/routes/user.routes.js";
 import testingroutes from "./src/routes/testing.routes.js"
 import products from "./src/routes/products.route.js"
+import cartmodel from "./src/routes/cart.routes.js";
 // import {getone,findAlldata,deletedata} from "./src/controllers/userform.controller.js"
 // import {datacreate,getdata,putdata} from "./src/controllers/user.controller.js"
 
@@ -41,6 +42,7 @@ app.use(express.json())
 userroutes(app)
 testingroutes(app)
 products(app)
+cartmodel(app)
 // // register
 // app.post('/datacreate',datacreate)
 

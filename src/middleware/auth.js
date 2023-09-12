@@ -10,15 +10,13 @@ console.log(token,"token verified");
       message: "No token provided!"
     });
   }
-  Jwt.verify(token,
-        'testing',
-            (err, decoded) => {
+  Jwt.verify(token,'testing',(err, decoded) => {
               if (err) {
                 return res.status(401).send({
                   message: "Unauthorized!",
                 });
               }
-              req.body.email = decoded.email;
+              req.body.userid = decoded.email;
               next();
             });
 };

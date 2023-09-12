@@ -7,7 +7,7 @@ const user = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     mobilenumber: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     gender: {
       type: DataTypes.STRING,
